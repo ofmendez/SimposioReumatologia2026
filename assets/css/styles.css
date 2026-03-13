@@ -1222,3 +1222,118 @@ a.contact-section__email {
 }
 
 }
+
+
+/* =========================
+   SUCCESS MODAL
+========================= */
+
+.success-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.success-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.success-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(19, 76, 153, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.success-modal__dialog {
+  position: relative;
+  z-index: 2;
+  width: min(560px, 100%);
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  padding: 42px 32px 32px;
+  transform: translateY(18px) scale(0.98);
+  transition: transform 0.25s ease;
+}
+
+.success-modal.is-open .success-modal__dialog {
+  transform: translateY(0) scale(1);
+}
+
+.success-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: #134C99;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.success-modal__content {
+  text-align: center;
+}
+
+.success-modal__title {
+  margin: 0 0 16px;
+  color: #134C99;
+  font-size: clamp(30px, 2.4vw, 44px);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.success-modal__text {
+  margin: 0 0 14px;
+  color: #6F6F6F;
+  font-size: clamp(18px, 1.2vw, 22px);
+  line-height: 1.25;
+}
+
+.success-modal__button {
+  margin-top: 12px;
+  min-width: 220px;
+  height: 54px;
+  border: 0;
+  border-radius: 999px;
+  background: #DF2027;
+  color: #FFFFFF;
+  font-family: "League Spartan", Arial, sans-serif;
+  font-size: clamp(18px, 1.1vw, 24px);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .success-modal__dialog {
+    padding: 40px 20px 24px;
+    border-radius: 22px;
+  }
+
+  .success-modal__close {
+    top: 10px;
+    right: 12px;
+  }
+
+  .success-modal__button {
+    width: 100%;
+    min-width: 0;
+  }
+}

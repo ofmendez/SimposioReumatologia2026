@@ -18,6 +18,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+  const successModal = document.getElementById("successModal");
+const successModalClose = document.getElementById("successModalClose");
+const successModalButton = document.getElementById("successModalButton");
+
 /* =========================
    COUNTDOWN
 ========================= */
@@ -27,6 +31,8 @@ const eventDate = new Date("2026-04-17T07:30:00-05:00").getTime();
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = eventDate - now;
+
+
 
   if (distance <= 0) {
     document.getElementById("days").textContent = "00";
@@ -88,8 +94,9 @@ registerForm.addEventListener("submit", async (e) => {
     await addDoc(collection(db, "inscripciones"), data);
     console.log("después de addDoc");
 
-    formMessage.textContent = "Registro enviado correctamente.";
-    registerForm.reset();
+    formMessage.textContent = "";
+registerForm.reset();
+openSuccessModal();
   } catch (error) {
     console.error("error al guardar", error);
     formMessage.textContent = "Hubo un error al enviar el formulario.";
@@ -97,5 +104,33 @@ registerForm.addEventListener("submit", async (e) => {
     console.log("finally");
     submitButton.disabled = false;
     submitButton.textContent = "REGISTRARME";
+  }
+});
+
+
+function openSuccessModal() {
+  successModal.classList.add("is-open");
+  successModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeSuccessModal() {
+  successModal.classList.remove("is-open");
+  successModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+successModalClose.addEventListener("click", closeSuccessModal);
+successModalButton.addEventListener("click", closeSuccessModal);
+
+successModal.addEventListener("click", (e) => {
+  if (e.target.classList.contains("success-modal__backdrop")) {
+    closeSuccessModal();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && successModal.classList.contains("is-open")) {
+    closeSuccessModal();
   }
 });
