@@ -59,6 +59,7 @@ const formMessage = document.getElementById("formMessage");
 
 registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  console.log("submit iniciado");
 
   const submitButton = registerForm.querySelector('button[type="submit"]');
   submitButton.disabled = true;
@@ -72,22 +73,28 @@ registerForm.addEventListener("submit", async (e) => {
     cedula: formData.get("cedula")?.trim() || "",
     celular: formData.get("celular")?.trim() || "",
     correo: formData.get("correo")?.trim() || "",
-    pais: formData.get("pais") || "",
-    ciudad: formData.get("ciudad") || "",
+    pais: formData.get("pais")?.trim() || "",
+    ciudad: formData.get("ciudad")?.trim() || "",
     profesion: formData.get("profesion")?.trim() || "",
     institucion: formData.get("institucion")?.trim() || "",
     asistencia: formData.get("asistencia") || "",
     createdAt: serverTimestamp()
   };
 
+  console.log("datos listos", data);
+
   try {
+    console.log("antes de addDoc");
     await addDoc(collection(db, "inscripciones"), data);
+    console.log("después de addDoc");
+
     formMessage.textContent = "Registro enviado correctamente.";
     registerForm.reset();
   } catch (error) {
-    console.error(error);
+    console.error("error al guardar", error);
     formMessage.textContent = "Hubo un error al enviar el formulario.";
   } finally {
+    console.log("finally");
     submitButton.disabled = false;
     submitButton.textContent = "REGISTRARME";
   }

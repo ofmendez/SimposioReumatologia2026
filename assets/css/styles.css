@@ -130,21 +130,21 @@ a {
 .hero__info-row {
   margin-top: 42px;
   display: flex;
-  gap: 38px;
+  gap: 1vw;
   flex-wrap: wrap;
-  width: min(70vw, 850px);
+  width: 55vw;
   justify-content: center;
 }
 
 .hero__date-block {
-  width: 45%;
+  width: 49%;
   display: flex;
   align-items:flex-start;
-  gap: 22px;
+  gap: 0.5vw;
 }
 
 .hero__day {
-  font-size: clamp(72px, 9vw, 110px);
+  font-size: clamp(50px, 8vw, 110px);
   line-height: 0.9;
   font-weight: 800;
   color: var(--white);
@@ -176,12 +176,13 @@ a {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  width: 49%;
   max-width: 390px;
 }
 
 .hero__location-icon {
-  width: 52px;
-  flex: 0 0 52px;
+  width: 4vw;
+  flex: 0 0 4vw;
 }
 
 .hero__location-text {
@@ -373,6 +374,31 @@ header.hero__menu {
   .hero__info-row {
     gap: 26px;
   }
+
+  .hero__content {
+  max-width: 100%;
+  }
+   .hero__left {
+    padding: 6vh 16px 32px;
+  }
+
+   .hero__date-block {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero__location-block {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero__support-inner {
+    padding: 18px 16px;
+    justify-content: center;
+    gap: 16px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -389,8 +415,8 @@ header.hero__menu {
   .menu__btn {
     min-width: auto;
     padding: 0 18px;
-    height: 36px;
-    font-size: 13px;
+    height: 9vw;
+    font-size: 3.2vw;
   }
 
   .hero__left {
@@ -410,6 +436,7 @@ header.hero__menu {
     margin-top: 28px;
     flex-direction: column;
     align-items: flex-start;
+    width: 70vw;
   }
 
   .hero__date-block {
@@ -424,6 +451,7 @@ header.hero__menu {
   }
 
   .hero__location-block {
+    width: 100%;
     max-width: 100%;
   }
 
@@ -473,6 +501,21 @@ header.hero__menu {
   }
 }
 
+@media (max-width: 1100px) and (min-width: 901px) and (orientation: portrait) {
+
+  .hero__left {
+    min-height: 40svh;
+    padding: 0 28px 70px 28px;
+}
+
+.hero__badge {
+        right: 17vw;
+        top: 25svh;
+        width: 15vw;
+    }
+
+}
+
 
 /* =========================
    AGENDA SECTION
@@ -484,7 +527,8 @@ header.hero__menu {
 }
 
 .agenda-section__inner {
-  width: min(1280px, calc(100% - 64px));
+  width: 85vw;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 40% 60%;
@@ -551,7 +595,7 @@ header.hero__menu {
 }
 
 .agenda-list {
-  width: 100%;
+  width: 90%;
 }
 
 .agenda-item,
@@ -561,15 +605,15 @@ header.hero__menu {
 
 .agenda-item {
   display: grid;
-  grid-template-columns: minmax(220px, 0.95fr) minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: minmax(0, 0.60fr) minmax(0, 1fr);
+  gap: 2vw;
   padding: 22px 0 24px;
 }
 
 .agenda-item__time {
   font-family: "Bebas Neue", sans-serif;
   color: #7A7A7A;
-  font-size: clamp(28px, 2.2vw, 38px);
+  font-size: clamp(24px, 2vw, 30px);
   line-height: 1;
   letter-spacing: 0.03em;
 }
@@ -629,6 +673,10 @@ header.hero__menu {
   .agenda-section {
     padding: 10% 5%;
   }
+
+  .agenda-list {
+    width: 100%;
+}
 
    .agenda-section__inner {
     grid-template-columns: 1fr;
@@ -755,7 +803,8 @@ header.hero__menu {
 }
 
 .contact-section__inner {
-  width: min(1280px, calc(100% - 64px));
+  width: 85vw;
+  max-width: 1280px;
   margin: 0 auto;
   min-height: 340px;
   display: flex;
@@ -839,12 +888,11 @@ header.hero__menu {
 
   .contact-section__brand {
     justify-content: center;
-    width: 80vw;
     padding: 0;
   }
 
   .contact-section__brand-logo {
-    width: min(100%, 340px);
+    width: 70vw;
   }
 
   .contact-section__brand-subtitle {
@@ -902,7 +950,8 @@ header.hero__menu {
 }
 
 .support-bar__inner {
-  width: min(1280px, calc(100% - 64px));
+  width: 85vw;
+  max-width: 1280px;
   margin: 0 auto;
 
   display: grid;
@@ -997,7 +1046,8 @@ a.contact-section__email {
 }
 
 .register-section__inner {
-  width: min(1280px, calc(100% - 64px));
+  width: 85vw;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1144,20 +1194,31 @@ a.contact-section__email {
 
 @media (max-width: 900px) {
   .register-section__inner {
-    width: min(1280px, calc(100% - 32px));
+    width: 100%;
     grid-template-columns: 1fr;
     gap: 48px;
   }
 
   .register-section {
-    padding: 64px 5% 72px;
+    padding: 64px 8% 72px;
 }
 
   .countdown {
-    gap: 18px;
+    gap: 1vw;
+    grid-template-columns: repeat(4, 20vw);
   }
 
   .form-row--half {
     grid-template-columns: 1fr;
   }
+
+  .countdown__number {
+    font-size: clamp(40px, 4vw, 92px);
+}
+
+.countdown__label{
+
+  font-size: clamp(14px, 1vw, 24px);
+}
+
 }
