@@ -26,7 +26,7 @@ const successModalButton = document.getElementById("successModalButton");
    COUNTDOWN
 ========================= */
 
-const eventDate = new Date("2026-04-17T07:30:00-05:00").getTime();
+const eventDate = new Date("2026-04-17T07:00:00-05:00").getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
